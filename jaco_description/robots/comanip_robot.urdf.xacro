@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="comanip_robot">
+  <xacro:include filename="$(find comanip_description)/urdf/structure/arm_j2s7s300.urdf.xacro" />
+  <xacro:include filename="$(find comanip_description)/urdf/sensors/azure_kinect_fixed.urdf.xacro"/>
+
+  <xacro:arm_j2s7s300 prefix="">
+  </xacro:arm_j2s7s300>
+
+  <xacro:azure_kinect_mount prefix="">
+  </xacro:azure_kinect_mount>
+
+  <!-- satellite camera -->
+  <!-- for overhead camera -->
+  <!-- <joint name="j2s7s300_link_base_camera_base" type="fixed">
+    <parent link="j2s7s300_link_base" />
+    <child link="camera_base" />
+    <origin xyz="-0.401 -0.368 1.140" rpy="0.022 1.549 1.590" />
+  </joint> -->
+
+  <!-- DEBUG: workspace for visualization -->
+  <!-- <joint name="j2s7s300_link_base_table_fixed" type="fixed">
+    <parent link="j2s7s300_link_base" />
+    <child link="table_fixed" />
+    <origin xyz="0.0 -0.45 0.2" rpy="0.0 0.0 0.0" /> 
+  </joint>
+  <link name="table_fixed">
+    <visual>
+      <geometry>
+        <box size="1.5 0.7 0.6" />
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+      <material name="blue">
+        <color rgba="0 0.2 0.2 0.25"/>
+      </material>
+    </visual>
+  </link> -->
+
+  <!-- for front camera -->
+  <joint name="j2s7s300_link_base_camera_extrinsic" type="fixed">
+   <parent link="j2s7s300_link_base" />
+   <child link="camera_base" />
+   <!-- <origin xyz="-0.63528058 -0.75006085  0.74888663" rpy="0.02064409688853032 0.6747981486927647 0.65476165654078" /> -->
+   <origin xyz="-0.7561665  -0.58616146  0.6445612" rpy="-0.0039058359119447496 0.6714356042699701 0.30621912717904426" />
+   </joint>
+
+  <!-- for asus -->
+   <!-- <joint name="j2s7s300_link_base_camera_extrinsic" type="fixed">
+   <parent link="j2s7s300_link_base" />
+   <child link="camera_rgb_optical_frame" />
+   <origin xyz="-0.07475499 -1.24440549  0.63589983" rpy="-2.173210448499168 0.03646544257356406 -0.04367387443475268" />
+   </joint> -->
+
+
+</robot>
